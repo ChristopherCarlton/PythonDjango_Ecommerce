@@ -5,8 +5,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
-from .models import Collection, Product
-from .serializers import CollectionSerializer, ProductSerializer
+from .models import Collection, Product, OrderItem, Review
+from .serializers import CollectionSerializer, ProductSerializer, ReviewSerializer
 from rest_framework.mixins import ListModelMixin, CreateModelMixin
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework.viewsets import ModelViewSet
@@ -36,3 +36,13 @@ class CollectionViewSet(ModelViewSet):
             return Response({'error': 'Product cannot be deleted because it is associated with an order item.'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
         collection.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+    
+class ReviewViewSet(ModelViewSet):
+    serializer_class = ReviewSerializer
+
+    def get_queryset(self):
+        return Review.objects.filter(product_id=self.kwargs['product_pk'])
+    
+
+    def get_serializer_context(self):
+        return{'product_id': self.kwargs['product_pk']}
