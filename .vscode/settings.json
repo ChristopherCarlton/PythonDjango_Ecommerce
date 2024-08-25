@@ -1,4 +1,9 @@
 {
-    "python.pythonPath": "/Users/chris_carlton1/.local/share/virtualenvs/storefront-tCYkcZpU/bin/python"
+    "python.pythonPath": "/Users/chris_carlton1/.local/share/virtualenvs/storefront-tCYkcZpU/bin/python",
+    "python.testing.pytestArgs": [
+        "."
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
 }
   
