@@ -13,3 +13,8 @@ DATABASES = {
         'PASSWORD': 'haydesgataS1.'
     }
 }
+
+EMAIL_HOST = 'localhost'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 2525
